@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Distribution Calculator</h2>
+
+  <div class="mb-3">
+    <label for="amount" class="form-label">Total Amount:</label>
+    <Input
+      id="amount"
+      @type="number"
+      @value={{this.amount}}
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="low-number" class="form-label">Low Number:</label>
+    <Input
+      id="low-number"
+      @type="number"
+      @value={{this.lowNumber}}
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="high-number" class="form-label">High Number:</label>
+    <Input
+      id="high-number"
+      @type="number"
+      @value={{this.highNumber}}
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="num-distributions" class="form-label">Number of Distributions:</label>
+    <Input
+      id="num-distributions"
+      @type="number"
+      @value={{this.distributionNumber}}
+      class="form-control"
+    />
+  </div>
+
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-primary"
+      {{on "click" this.calculateDistribution}}
+    >
+      Calculate Distribution
+    </button>
+  </div>
+
+  {{#if this.distributions.length}}
+    <h3 class="mt-4">Distributed Amounts:</h3>
+
+    <table class="table table-bordered table-striped mt-3">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Entry</th>
+          <th>Amount</th>
+          <th>Cumulative Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.distributions as |distribution index|}}
+          <tr>
+            <td>{{index}}</td>
+            <td>{{distribution.entry}}</td>
+            <td>${{distribution.amount}}</td>
+            <td>${{distribution.cumulativeAverage}}</td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td><strong>Average Entry Point:</strong></td>
+          <td><strong>${{this.averageEntry}}</strong></td>
+          <td><strong>Total Average: ${{this.totalAverage}}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  {{/if}}
+</div>

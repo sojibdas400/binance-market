@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'market',
+    modulePrefix: 'binance-market',
     environment,
     rootURL: '/',
     locationType: 'history',

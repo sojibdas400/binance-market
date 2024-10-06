@@ -1,5 +1,5 @@
-import Application from 'market/app';
-import config from 'market/config/environment';
+import Application from 'binance-market/app';
+import config from 'binance-market/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
