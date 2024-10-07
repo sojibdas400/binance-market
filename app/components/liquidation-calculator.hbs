@@ -1,0 +1,23 @@
+<div class="liquidation-calculator">
+  <h2>Liquidation Price Calculator</h2>
+
+  <label for="leverage">Leverage</label>
+  <Input @type="number" id="leverage" @value={{this.leverage}} />
+  <br />
+
+  <label for="entryPrice">Entry Price (USDT)</label>
+  <Input @type="number" id="entryPrice" @value={{this.entryPrice}} />
+  <br />
+
+  <label for="balance">Total Account Balance (USDT)</label>
+  <Input @type="number" id="balance" @value={{this.balance}} />
+  <br />
+
+  <button type="button" {{on "click" this.calculateLiquidationPrice}}>
+    Calculate
+  </button>
+
+  {{#if this.liquidationPrice}}
+    <h3>Liquidation Price: {{this.liquidationPrice}} USDT</h3>
+  {{/if}}
+</div>

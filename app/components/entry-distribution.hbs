@@ -1,0 +1,39 @@
+<div>
+  <h2>Distribution Calculator</h2>
+
+  <label for="amount">Total Amount:</label>
+  <Input id="amount" @type="number" @value={{this.amount}} />
+  <br />
+
+  <label for="low-number">Low Number:</label>
+  <Input id="low-number" @type="number" @value={{this.lowNumber}} />
+  <br />
+
+  <label for="high-number">High Number:</label>
+  <Input id="high-number" @type="number" @value={{this.highNumber}} />
+  <br />
+
+  <label for="num-distributions">Number of Distributions:</label>
+  <Input
+    id="num-distributions"
+    @type="number"
+    @value={{this.distributionNumber}}
+  />
+  <br />
+
+  <button type="button" {{on "click" this.calculateDistribution}}>
+    Calculate Distribution
+  </button>
+
+  {{#if this.distributions.length}}
+    <h3>Distributed Amounts:</h3>
+    <ul>
+      {{#each this.distributions as |distribution|}}
+        <li>Entry:
+          {{distribution.entry}}
+          => Number:
+          {{distribution.number}}: ${{distribution.amount}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
