@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="header">
+    <div class="symbol">REEFUSDT</div>
+    <div class="leverage">Isolated
+      <span>
+        <input
+          type="number"
+          value={{this.leverage}}
+          {{on "input" this.updateLeverage}}
+        />x
+      </span>
+    </div>
+  </div>
+  <div class="grid">
+    <div>
+      <small>Unrealized PNL (USDT)</small>
+      <div class="value negative">
+        <input type="number" value={{this.pnl}} disabled />
+      </div>
+    </div>
+    <div>
+      <small>ROI</small>
+      <div class="value negative">
+        <input type="number" value={{this.roi}} disabled />
+      </div>
+    </div>
+  </div>
+
+  <!-- Row with Size, Margin, Margin Ratio -->
+  <div class="row">
+    <div>
+      <small>Size (USDT)</small>
+      <div class="highlight"><input
+          type="number"
+          value={{this.size}}
+          {{on "input" this.updateSize}}
+        />
+      </div>
+    </div>
+    <div>
+      <small>Margin (USDT)</small>
+      <div class="highlight">
+        <input
+          type="number"
+          value={{this.margin}}
+          {{on "input" this.updateMargin}}
+        />
+      </div>
+    </div>
+    <div>
+      <small>Margin Ratio</small>
+      <div class="highlight positive">
+        <input type="number" value={{this.marginRatio}} disabled />
+      </div>
+    </div>
+  </div>
+
+  <!-- Row with Entry Price, Mark Price, Liq. Price -->
+  <div class="row">
+    <div>
+      <small>Entry Price (USDT)</small>
+      <div class="highlight">
+        <input
+          type="number"
+          value={{this.entryPrice}}
+          {{on "input" this.updateEntryPrice}}
+        />
+      </div>
+    </div>
+    <div>
+      <small>Mark Price (USDT)</small>
+      <div class="highlight">
+        <input
+          type="number"
+          value={{this.markPrice}}
+          {{on "input" this.updateMarkPrice}}
+        />
+      </div>
+    </div>
+    <div>
+      <small>Liq. Price (USDT)</small>
+      <div class="highlight"><input
+          type="number"
+          value={{this.liquidationPrice}}
+          {{on "input" this.updateLiquidationPrice}}
+        />
+      </div>
+    </div>
+  </div>
+</div>

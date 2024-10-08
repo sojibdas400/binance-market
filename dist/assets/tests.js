@@ -125,6 +125,47 @@ define("binance-market/tests/integration/components/liquidation-calculator-test"
     });
   });
 });
+define("binance-market/tests/integration/components/stock-calculator-test", ["qunit", "binance-market/tests/helpers", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _helpers, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"binance-market/tests/helpers",0,"@ember/test-helpers",0,"@ember/template-factory"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | stock-calculator', function (hooks) {
+    (0, _helpers.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <StockCalculator />
+      */
+      {
+        "id": "DJv8MCP+",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"stock-calculator\"]]",
+        "moduleName": "C:\\Users\\PC\\Desktop\\stock market\\binance-market\\binance-market\\tests\\integration\\components\\stock-calculator-test.js",
+        "isStrictMode": false
+      }));
+      assert.dom().hasText('');
+
+      // Template block usage:
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <StockCalculator>
+              template block text
+            </StockCalculator>
+          
+      */
+      {
+        "id": "sUpcvMT/",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n        template block text\\n      \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"stock-calculator\"]]",
+        "moduleName": "C:\\Users\\PC\\Desktop\\stock market\\binance-market\\binance-market\\tests\\integration\\components\\stock-calculator-test.js",
+        "isStrictMode": false
+      }));
+      assert.dom().hasText('template block text');
+    });
+  });
+});
 define("binance-market/tests/integration/components/stocks-test", ["qunit", "binance-market/tests/helpers", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _helpers, _testHelpers, _templateFactory) {
   "use strict";
 

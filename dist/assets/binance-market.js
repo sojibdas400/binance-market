@@ -282,6 +282,207 @@
   _exports.default = LiquidationCalculator;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, LiquidationCalculator);
 });
+;define("binance-market/components/stock-calculator", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+  0; //eaimeta@70e063a35619d71f0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/template-factory",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
+  function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
+  function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="container">
+    <div class="header">
+      <div class="symbol">REEFUSDT</div>
+      <div class="leverage">Isolated
+        <span>
+          <input
+            type="number"
+            value={{this.leverage}}
+            {{on "input" this.updateLeverage}}
+          />x
+        </span>
+      </div>
+    </div>
+    <div class="grid">
+      <div>
+        <small>Unrealized PNL (USDT)</small>
+        <div class="value negative">
+          <input type="number" value={{this.pnl}} disabled />
+        </div>
+      </div>
+      <div>
+        <small>ROI</small>
+        <div class="value negative">
+          <input type="number" value={{this.roi}} disabled />
+        </div>
+      </div>
+    </div>
+  
+    <!-- Row with Size, Margin, Margin Ratio -->
+    <div class="row">
+      <div>
+        <small>Size (USDT)</small>
+        <div class="highlight"><input
+            type="number"
+            value={{this.size}}
+            {{on "input" this.updateSize}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Margin (USDT)</small>
+        <div class="highlight">
+          <input
+            type="number"
+            value={{this.margin}}
+            {{on "input" this.updateMargin}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Margin Ratio</small>
+        <div class="highlight positive">
+          <input type="number" value={{this.marginRatio}} disabled />
+        </div>
+      </div>
+    </div>
+  
+    <!-- Row with Entry Price, Mark Price, Liq. Price -->
+    <div class="row">
+      <div>
+        <small>Entry Price (USDT)</small>
+        <div class="highlight">
+          <input
+            type="number"
+            value={{this.entryPrice}}
+            {{on "input" this.updateEntryPrice}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Mark Price (USDT)</small>
+        <div class="highlight">
+          <input
+            type="number"
+            value={{this.markPrice}}
+            {{on "input" this.updateMarkPrice}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Liq. Price (USDT)</small>
+        <div class="highlight"><input
+            type="number"
+            value={{this.liquidationPrice}}
+            {{on "input" this.updateLiquidationPrice}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  */
+  {
+    "id": "qrC//7sd",
+    "block": "[[[10,0],[14,0,\"container\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"header\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"symbol\"],[12],[1,\"REEFUSDT\"],[13],[1,\"\\n    \"],[10,0],[14,0,\"leverage\"],[12],[1,\"Isolated\\n      \"],[10,1],[12],[1,\"\\n        \"],[11,\"input\"],[16,2,[30,0,[\"leverage\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateLeverage\"]]],null],[12],[13],[1,\"x\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"grid\"],[12],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Unrealized PNL (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"value negative\"],[12],[1,\"\\n        \"],[10,\"input\"],[15,2,[30,0,[\"pnl\"]]],[14,\"disabled\",\"\"],[14,4,\"number\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"ROI\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"value negative\"],[12],[1,\"\\n        \"],[10,\"input\"],[15,2,[30,0,[\"roi\"]]],[14,\"disabled\",\"\"],[14,4,\"number\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[3,\" Row with Size, Margin, Margin Ratio \"],[1,\"\\n  \"],[10,0],[14,0,\"row\"],[12],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Size (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight\"],[12],[11,\"input\"],[16,2,[30,0,[\"size\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateSize\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Margin (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight\"],[12],[1,\"\\n        \"],[11,\"input\"],[16,2,[30,0,[\"margin\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateMargin\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Margin Ratio\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight positive\"],[12],[1,\"\\n        \"],[10,\"input\"],[15,2,[30,0,[\"marginRatio\"]]],[14,\"disabled\",\"\"],[14,4,\"number\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[3,\" Row with Entry Price, Mark Price, Liq. Price \"],[1,\"\\n  \"],[10,0],[14,0,\"row\"],[12],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Entry Price (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight\"],[12],[1,\"\\n        \"],[11,\"input\"],[16,2,[30,0,[\"entryPrice\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateEntryPrice\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Mark Price (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight\"],[12],[1,\"\\n        \"],[11,\"input\"],[16,2,[30,0,[\"markPrice\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateMarkPrice\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[10,\"small\"],[12],[1,\"Liq. Price (USDT)\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"highlight\"],[12],[11,\"input\"],[16,2,[30,0,[\"liquidationPrice\"]]],[24,4,\"number\"],[4,[38,3],[\"input\",[30,0,[\"updateLiquidationPrice\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"div\",\"span\",\"input\",\"on\",\"small\"]]",
+    "moduleName": "binance-market/components/stock-calculator.hbs",
+    "isStrictMode": false
+  });
+  let StockCalculatorComponent = _exports.default = (_class = class StockCalculatorComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "leverage", _descriptor, this);
+      _initializerDefineProperty(this, "size", _descriptor2, this);
+      // Size in USDT
+      _initializerDefineProperty(this, "margin", _descriptor3, this);
+      // Margin in USDT
+      _initializerDefineProperty(this, "entryPrice", _descriptor4, this);
+      _initializerDefineProperty(this, "markPrice", _descriptor5, this);
+      _initializerDefineProperty(this, "liquidationPrice", _descriptor6, this);
+    }
+    // Computed properties for PNL, ROI, and Margin Ratio
+    get pnl() {
+      return (this.markPrice - this.entryPrice) * this.size * this.leverage;
+    }
+    get roi() {
+      return (this.pnl / this.margin * 100).toFixed(2);
+    }
+    get marginRatio() {
+      return (this.margin / (this.size * this.entryPrice) * 100).toFixed(2);
+    }
+
+    // Actions to update values based on user input
+    updateLeverage(event) {
+      this.leverage = parseFloat(event.target.value);
+    }
+    updateSize(event) {
+      this.size = parseFloat(event.target.value);
+    }
+    updateMargin(event) {
+      this.margin = parseFloat(event.target.value);
+    }
+    updateEntryPrice(event) {
+      this.entryPrice = parseFloat(event.target.value);
+    }
+    updateMarkPrice(event) {
+      this.markPrice = parseFloat(event.target.value);
+    }
+    updateLiquidationPrice(event) {
+      this.liquidationPrice = parseFloat(event.target.value);
+    }
+  }, _descriptor = _applyDecoratedDescriptor(_class.prototype, "leverage", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 26;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "size", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 42.487485;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "margin", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 7.52;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "entryPrice", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 0.006536;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "markPrice", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 0.006192;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "liquidationPrice", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 0.005523;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "updateLeverage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLeverage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMargin", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMargin"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateEntryPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateEntryPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMarkPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMarkPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateLiquidationPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLiquidationPrice"), _class.prototype), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, StockCalculatorComponent);
+});
 ;define("binance-market/components/stocks", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
   "use strict";
 
@@ -292,13 +493,15 @@
   0; //eaimeta@70e063a35619d71f0,"@glimmer/component",0,"@ember/template-factory",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <EntryDistribution />
+    {{! <EntryDistribution />
   
-  <LiquidationCalculator />
+  <LiquidationCalculator /> }}
+  
+  <StockCalculator />
   */
   {
-    "id": "YGgRcTil",
-    "block": "[[[8,[39,0],null,null,null],[1,\"\\n\\n\"],[8,[39,1],null,null,null]],[],false,[\"entry-distribution\",\"liquidation-calculator\"]]",
+    "id": "0mPP/ui5",
+    "block": "[[[1,\"\\n\"],[8,[39,0],null,null,null]],[],false,[\"stock-calculator\"]]",
     "moduleName": "binance-market/components/stocks.hbs",
     "isStrictMode": false
   });
@@ -1129,7 +1332,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("binance-market/app")["default"].create({"name":"binance-market","version":"0.0.0+63d24a1a"});
+            require("binance-market/app")["default"].create({"name":"binance-market","version":"0.0.0+81cc4ba9"});
           }
         
 //# sourceMappingURL=binance-market.map
