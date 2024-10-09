@@ -422,49 +422,68 @@
     // Actions to update values based on user input
     updateLeverage(event) {
       this.leverage = parseFloat(event.target.value);
+      this.updateLiquidationPrice();
+      this.checkSizeLimit();
     }
     updateSize(event) {
-      this.size = parseFloat(event.target.value);
+      let check = this.checkSizeLimit();
+      if (check) {
+        this.size = parseFloat(event.target.value);
+        this.updateLiquidationPrice();
+      }
     }
     updateMargin(event) {
       this.margin = parseFloat(event.target.value);
+      this.checkSizeLimit();
     }
     updateEntryPrice(event) {
       this.entryPrice = parseFloat(event.target.value);
+      this.updateLiquidationPrice();
     }
     updateMarkPrice(event) {
       this.markPrice = parseFloat(event.target.value);
     }
-    updateLiquidationPrice(event) {
-      this.liquidationPrice = parseFloat(event.target.value);
+    updateLiquidationPrice() {
+      if (this.leverage > 0 && this.margin > 0) {
+        this.liquidationPrice = this.entryPrice - this.size / this.leverage / this.margin;
+        console.log('liquidationPrice', this.liquidationPrice);
+      }
+    }
+    checkSizeLimit() {
+      const maxSize = this.leverage * this.margin;
+      if (this.size > maxSize) {
+        alert(`Size exceeds the maximum allowed size of ${maxSize} USDT. Please reduce the size.`);
+        return false;
+      }
+      return true;
     }
   }, _descriptor = _applyDecoratedDescriptor(_class.prototype, "leverage", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
-      return 26;
+      return 10;
     }
   }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "size", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
-      return 42.487485;
+      return 71;
     }
   }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "margin", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
-      return 7.52;
+      return 7.18;
     }
   }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "entryPrice", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
-      return 0.006536;
+      return 5.2257;
     }
   }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "markPrice", [_tracking.tracked], {
     configurable: true,
@@ -480,7 +499,7 @@
     initializer: function () {
       return 0.005523;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "updateLeverage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLeverage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMargin", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMargin"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateEntryPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateEntryPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMarkPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMarkPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateLiquidationPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLiquidationPrice"), _class.prototype), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "updateLeverage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLeverage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMargin", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMargin"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateEntryPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateEntryPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateMarkPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateMarkPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateLiquidationPrice", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateLiquidationPrice"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkSizeLimit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkSizeLimit"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, StockCalculatorComponent);
 });
 ;define("binance-market/components/stocks", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
@@ -1332,7 +1351,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("binance-market/app")["default"].create({"name":"binance-market","version":"0.0.0+81cc4ba9"});
+            require("binance-market/app")["default"].create({"name":"binance-market","version":"0.0.0+a949561b"});
           }
         
 //# sourceMappingURL=binance-market.map

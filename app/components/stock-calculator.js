@@ -3,10 +3,10 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class StockCalculatorComponent extends Component {
-  @tracked leverage = 26;
-  @tracked size = 42.487485; // Size in USDT
-  @tracked margin = 7.52; // Margin in USDT
-  @tracked entryPrice = 0.006536;
+  @tracked leverage = 10;
+  @tracked size = 71; // Size in USDT
+  @tracked margin = 7.18; // Margin in USDT
+  @tracked entryPrice = 5.2257;
   @tracked markPrice = 0.006192;
   @tracked liquidationPrice = 0.005523;
 
@@ -27,21 +27,29 @@ export default class StockCalculatorComponent extends Component {
   @action
   updateLeverage(event) {
     this.leverage = parseFloat(event.target.value);
+    this.updateLiquidationPrice();
+    this.checkSizeLimit();
   }
 
   @action
   updateSize(event) {
-    this.size = parseFloat(event.target.value);
+    let check = this.checkSizeLimit();
+    if (check) {
+      this.size = parseFloat(event.target.value);
+      this.updateLiquidationPrice();
+    }
   }
 
   @action
   updateMargin(event) {
     this.margin = parseFloat(event.target.value);
+    this.checkSizeLimit();
   }
 
   @action
   updateEntryPrice(event) {
     this.entryPrice = parseFloat(event.target.value);
+    this.updateLiquidationPrice();
   }
 
   @action
@@ -50,7 +58,23 @@ export default class StockCalculatorComponent extends Component {
   }
 
   @action
-  updateLiquidationPrice(event) {
-    this.liquidationPrice = parseFloat(event.target.value);
+  updateLiquidationPrice() {
+    if (this.leverage > 0 && this.margin > 0) {
+      this.liquidationPrice =
+        this.entryPrice - this.size / this.leverage / this.margin;
+      console.log('liquidationPrice', this.liquidationPrice);
+    }
+  }
+
+  @action
+  checkSizeLimit() {
+    const maxSize = this.leverage * this.margin;
+    if (this.size > maxSize) {
+      alert(
+        `Size exceeds the maximum allowed size of ${maxSize} USDT. Please reduce the size.`,
+      );
+      return false;
+    }
+    return true;
   }
 }
