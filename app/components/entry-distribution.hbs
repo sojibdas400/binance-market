@@ -41,15 +41,13 @@
     />
   </div>
 
-  <div class="text-center">
-    <button
-      type="button"
-      class="btn btn-primary"
-      {{on "click" this.calculateDistribution}}
-    >
-      Calculate Distribution
-    </button>
-  </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    {{on "click" this.calculateDistribution}}
+  >
+    Calculate Distribution
+  </button>
 
   {{#if this.distributions.length}}
     <h3 class="mt-4">Distributed Amounts:</h3>
