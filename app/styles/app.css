@@ -1,1 +1,91 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.binance-market-interface {
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .binance-container {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .binance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .binance-symbol {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #3aa969;
+  }
+  
+  .binance-leverage {
+    font-size: 0.9em;
+    color: #333;
+  }
+  
+  .binance-leverage span {
+    color: #ff9900;
+  }
+  
+  .binance-value {
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+  
+  .binance-negative {
+    color: red;
+  }
+  
+  .binance-positive {
+    color: green;
+  }
+  
+  .binance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .binance-grid div {
+    background-color: #f7f7f7;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .binance-grid div small {
+    display: block;
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  .binance-highlight {
+    font-size: 1.3em;
+  }
+  
+  .binance-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .binance-row div {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+  }
+  
+}

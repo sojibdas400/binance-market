@@ -1,0 +1,101 @@
+{{! template-lint-disable require-input-label }}
+
+<div class="binance-market-interface">
+  <h2 class="mb-4 text-center">Stock Calculator</h2>
+  {{#if this.showWarning}}
+    <h4 class="text-danger text-muted text-center mb-2">
+      {{this.showWarning}}
+    </h4>
+  {{/if}}
+
+  <div class="container">
+    <div class="binance-header">
+      <div class="binance-symbol">Coin</div>
+      <div class="binance-leverage">Isolated
+        <span>
+          <Input
+            @type="number"
+            @value={{this.leverage}}
+            {{on "input" this.updateLeverage}}
+          />
+        </span>
+      </div>
+    </div>
+    <div class="binance-grid">
+      <div>
+        <small>Unrealized PNL (USDT)</small>
+        <div class="binance-value binance-negative">
+          <Input @type="number" @value={{this.pnl}} disabled />
+        </div>
+      </div>
+      <div>
+        <small>ROI</small>
+        <div class="binance-value binance-negative">
+          <Input @type="number" @value={{this.roi}} disabled />
+        </div>
+      </div>
+    </div>
+
+    <div class="binance-row">
+      <div>
+        <small>Size (USDT)</small>
+        <div class="binance-highlight">
+          <Input
+            @type="number"
+            @value={{this.size}}
+            {{on "input" this.updateSize}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Margin (USDT)</small>
+        <div class="binance-highlight">
+          <Input
+            @type="number"
+            @value={{this.margin}}
+            {{on "input" this.updateMargin}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Margin Ratio</small>
+        <div class="binance-highlight binance-positive">
+          <Input @type="number" @value={{this.marginRatio}} disabled />
+        </div>
+      </div>
+    </div>
+
+    <div class="binance-row">
+      <div>
+        <small>Entry Price (USDT)</small>
+        <div class="binance-highlight">
+          <Input
+            @type="number"
+            @value={{this.entryPrice}}
+            {{on "input" this.updateEntryPrice}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Mark Price (USDT)</small>
+        <div class="binance-highlight">
+          <Input
+            @type="number"
+            @value={{this.marketPrice}}
+            {{on "input" this.updateMarkPrice}}
+          />
+        </div>
+      </div>
+      <div>
+        <small>Liq. Price (USDT)</small>
+        <div class="binance-highlight">
+          <Input
+            @type="number"
+            @value={{this.liquidationPrice}}
+            {{on "input" this.updateLiquidationPrice}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
